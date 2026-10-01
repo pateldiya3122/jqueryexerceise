@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Btn</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        #content {
+            padding: 15px;
+            background-color: lightblue;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="togglebtn">Hide / Show</button>
+    <div id="content">
+        This is the content. Click the button to show or hide it.
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#togglebtn").click(function(){
+                $("#content").toggle();
+            })
+        })
+    </script>
+</body>
+</html>

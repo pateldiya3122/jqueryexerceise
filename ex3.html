@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">Event Handling</h1>
+
+    <p id="message">Message is Showing!</p>
+
+    <button id="showbtn">Show</button>
+    <button id="hidebtn">Hide</button>
+    <button id="changebtn">Change</button>
+
+    <div id="box">
+        Hover Over Me!
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            // Click event - Show
+            $("#showbtn").click(function() {
+                $("#message").show();
+            });
+
+            // Click event - Hide
+            $("#hidebtn").click(function() {
+                $("#message").hide();
+            });
+
+            // Click event - Change content
+            $("#changebtn").click(function() {
+                $("#message").text("The text has been changed!");
+            });
+
+            // Hover event
+            $("#box").hover(function() {
+                $(this).css("background-color", "yellow");
+            }, function() {
+                $(this).css("background-color", "lightblue");
+            });
+
+        });
+    </script>
+
+</body>
+</html>

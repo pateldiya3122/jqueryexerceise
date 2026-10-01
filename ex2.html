@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery DOM Manipulation</title>
+
+    <style>
+        .highlight {
+            color: red;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="title">Hello World</h1>
+
+    <p id="message">This is my paragraph.</p>
+
+    <button id="myButton">Click Me</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            // Change text
+            $("#title").text("Welcome to jQuery!");
+
+            // Add class
+            $("#message").addClass("highlight");
+
+            // Change attribute
+            $("#myButton").attr("title", "This is a button");
+
+        });
+    </script>
+
+</body>
+</html>

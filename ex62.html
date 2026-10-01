@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an accordion</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+     <style>
+        .question {
+            background-color: lightblue;
+            padding: 15px;
+            cursor: pointer;
+            width: 400px;
+            margin-top: 5px;
+        }
+
+        .answer {
+            display: none;
+            padding: 15px;
+            background-color: lightgray;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h2>FAQ Accordion</h2>
+
+    <div class="question">What is HTML?</div>
+    <div class="answer">HTML is used to create a web page.</div>
+
+    <div class="question">What is CSS?</div>
+    <div class="answer">CSS is used to style a web page.</div>
+
+    <div class="question">What is jquery?</div>
+    <div class="answer">jquery is used to add interactivity to a web page.</div>
+
+    <script>
+        $(document).ready(function(){
+             $(".question").click(function() {
+
+                // Close all other answers
+                $(".answer").not($(this).next()).slideUp();
+
+                // Open/close the clicked answer
+                $(this).next().slideToggle();
+
+            });
+        })
+    </script>
+    
+</body>
+</html>

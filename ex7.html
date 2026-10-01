@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery UI widgets like Datepicker</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet"
+          href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 50px;
+        }
+
+        #date {
+            padding: 10px;
+            width: 200px;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h2>Select Your Date</h2>
+    <input type="text" id="date" placeholder="Select Date">
+
+    <script>
+        $(document).ready(function(){
+            $("#date").datepicker({
+                datefprmat: "dd-mm-yy",
+                changeMonth: true,
+                changeYear: true,
+                mindate: 0,
+                maxdate: "+1y"
+
+            });
+        })
+    </script>
+</body>
+</html>

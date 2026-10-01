@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form handling</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+
+        form {
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+
+        #success {
+            color: green;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Regestration Form</h1>
+    <form id="myform">
+        <label>Name:</label>
+        <input type="text" id="name">
+        <p id="nameerror" class="error">Please Enter Your Name</p>
+
+        <label>Email:</label>
+        <input type="email" id="email">
+        <p id="emailerror" class="error">Please Enter a valid Email</p>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+        <p id="passworderror" class="error">Password must be at least 6 characters long</p>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="success"></p>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#myform").submit(function(event){
+                event.preventDefault();
+
+                var name = $("#name").val().trim();
+                var email = $("#email").val().trim();
+                var password = $("#password").val();
+
+                var isvalid = true;
+
+                if(name === ""){
+                    $("#nameerror").show();
+                    isvalid = false;
+                }
+
+                var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+                if(!emailPattern.test(email)){
+                    $("#emailerror").show();
+                    isvalid = false;
+                 }
+
+               
+                if (password === "") {
+                    $("#passworderror")
+                        .text("Password is required.")
+                        .show();
+
+                    valid = false;
+
+                } else if (password.length < 6) {
+
+                    $("#passworderror")
+                        .text("Password must be at least 6 characters.")
+                        .show();
+
+                    valid = false;
+                }
+
+
+                if(isvalid){
+                    return;
+                 }
+
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts",
+                    type: "POST",
+                    data: {
+                        name: name,
+                        email: email,
+                        password: password
+                    },
+                    success: function(response){
+                        $("#success").text("Form Submitted Successfully!");
+                    },
+                        $("#myform")[0].reset();
+                        
+
+                    error: function() {
+                        $("#success")
+                            .css("color", "red")
+                            .text("Something went wrong.");
+                    }
+
+                }); 
+
+
+            });
+
+        });
+    </script>
+</body>
+</html>
